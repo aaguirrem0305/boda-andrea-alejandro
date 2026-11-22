@@ -12,35 +12,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
       :root {
-        --bg: #faf6ef;
-        --surface: #ffffff;
-        --surface-2: #f3ecdf;
-        --ink: #2e2a24;
-        --ink-soft: #5d564b;
-        --line: #ddd2bf;
-        --accent: #b5502f;
-        --accent-deep: #8f3d21;
-        --accent-soft: #f6e3d8;
-        --green: #476b4f;
-        --green-soft: #e4ecdf;
-        --gold: #a97e2f;
-        --shadow: 0 10px 30px rgba(62, 44, 24, 0.12);
+        --bg: #fff3e1;
+        --surface: #fffdf9;
+        --surface-2: #fbeed3;
+        --ink: #0d2b45;
+        --ink-soft: #46607c;
+        --line: #8897c7;
+        --accent: #f08a2b;
+        --accent-deep: #c05e06;
+        --accent-soft: #fde7ce;
+        --on-accent: #0d2b45;
+        --green: #e83d7a;
+        --green-soft: #fadce9;
+        --gold: #f4a62a;
+        --shadow: 0 10px 30px rgba(13, 43, 69, 0.14);
         --radius: 14px;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #1d1a16;
-          --surface: #29241e;
-          --surface-2: #332c24;
-          --ink: #f0e9dd;
-          --ink-soft: #c4bba9;
-          --line: #4a4236;
-          --accent: #e08a63;
-          --accent-deep: #eda582;
-          --accent-soft: #463026;
-          --green: #9dbf9f;
-          --green-soft: #2e3d2c;
-          --gold: #d3ab55;
+          --bg: #0d2b45;
+          --surface: #14324e;
+          --surface-2: #1b3a58;
+          --ink: #fff3e1;
+          --ink-soft: #c9d2e4;
+          --line: #46587a;
+          --accent: #f08a2b;
+          --accent-deep: #f4a62a;
+          --accent-soft: #24405f;
+          --on-accent: #0d2b45;
+          --green: #f27ca5;
+          --green-soft: #46263a;
+          --gold: #f4a62a;
           --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
         }
       }
@@ -73,7 +75,7 @@
       }
       .hero .velo {
         position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(24,16,8,0.34) 0%, rgba(24,16,8,0.08) 38%, rgba(24,16,8,0.72) 100%);
+        background: linear-gradient(180deg, rgba(13,43,69,0.34) 0%, rgba(13,43,69,0.08) 38%, rgba(13,43,69,0.74) 100%);
         display: flex; align-items: flex-end;
       }
       .hero .contenido { padding-top: 34px; padding-bottom: 40px; width: 100%; }
@@ -86,7 +88,7 @@
       .hero p.sub { font-size: clamp(1.02rem, 2.6vw, 1.25rem); margin: 0 0 22px; max-width: 34em; }
       .btn {
         display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        background: var(--accent); color: #fff; border: none; cursor: pointer;
+        background: var(--accent); color: var(--on-accent); border: none; cursor: pointer;
         padding: 12px 26px; border-radius: 999px; font-weight: 600; font-size: 1rem;
         text-decoration: none; min-height: 48px;
       }
@@ -99,7 +101,7 @@
       section { padding: 52px 0 8px; }
       .titulo-seccion { font-size: clamp(1.7rem, 4.5vw, 2.3rem); margin: 0 0 6px; font-weight: 600; }
       .bajada { color: var(--ink-soft); margin: 0 0 26px; max-width: 44em; }
-      .regla { width: 54px; height: 3px; background: var(--accent); border-radius: 2px; margin: 0 0 14px; }
+      .regla { width: 54px; height: 3px; background: var(--gold); border-radius: 2px; margin: 0 0 14px; }
 
       /* ---------- Programa ---------- */
       .programa { display: grid; gap: 18px; grid-template-columns: 1fr; }
@@ -146,7 +148,7 @@
       .paso > h3 { font-size: 1.25rem; margin: 0 0 4px; }
       .paso > h3 .num {
         display: inline-flex; align-items: center; justify-content: center;
-        width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff;
+        width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent);
         font-family: "Jost", sans-serif; font-size: 0.95rem; font-weight: 600; margin-right: 8px; vertical-align: 2px;
       }
       .paso .ayuda { color: var(--ink-soft); margin: 0 0 14px; font-size: 0.96rem; }
@@ -171,11 +173,11 @@
         min-width: 52px; padding: 8px 16px; border-radius: 999px; cursor: pointer;
         border: 2px solid var(--line); background: var(--surface); font-weight: 600;
       }
-      .segmentos button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: #fff; }
+      .segmentos button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
       .stepper { display: inline-flex; align-items: center; gap: 14px; }
       .stepper button {
         width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent);
-        background: var(--surface); color: var(--accent); font-size: 1.4rem; font-weight: 600; cursor: pointer; line-height: 1;
+        background: var(--surface); color: var(--accent-deep); font-size: 1.4rem; font-weight: 600; cursor: pointer; line-height: 1;
       }
       .stepper button:disabled { opacity: 0.35; cursor: not-allowed; }
       .stepper .valor { font-size: 1.5rem; font-weight: 600; min-width: 1.4em; text-align: center; }
@@ -229,6 +231,30 @@
       footer { padding: 46px 0 60px; text-align: center; color: var(--ink-soft); }
       footer .nombres { font-family: "Playfair Display", Georgia, serif; font-size: 1.5rem; color: var(--ink); margin: 0 0 4px; }
       footer p { margin: 0; }
+      footer .credito-musica { margin-top: 14px; font-size: 0.82rem; }
+
+      /* ---------- Botón flotante de música ---------- */
+      .btn-musica {
+        position: fixed; right: 18px; bottom: 18px; z-index: 60;
+        width: 58px; height: 58px; border-radius: 50%;
+        background: var(--accent); color: var(--on-accent);
+        border: 2px solid var(--gold); cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+        box-shadow: 0 8px 22px rgba(13, 43, 69, 0.35);
+        padding: 0;
+      }
+      .btn-musica:hover { background: var(--gold); }
+      .btn-musica svg { width: 26px; height: 26px; fill: currentColor; }
+      .btn-musica .icono-pausa { display: none; }
+      .btn-musica.sonando .icono-pausa { display: block; }
+      .btn-musica.sonando .icono-play { display: none; }
+      @media (prefers-reduced-motion: no-preference) {
+        .btn-musica.sonando { animation: pulso-musica 2.4s ease-in-out infinite; }
+        @keyframes pulso-musica {
+          0%, 100% { box-shadow: 0 8px 22px rgba(13, 43, 69, 0.35), 0 0 0 0 rgba(244, 166, 42, 0.45); }
+          50% { box-shadow: 0 8px 22px rgba(13, 43, 69, 0.35), 0 0 0 10px rgba(244, 166, 42, 0); }
+        }
+      }
     </style>
   </head>
   <body>
@@ -473,7 +499,14 @@
     <footer>
       <p class="nombres">Andrea &amp; Alejandro</p>
       <p>Hotel Coral Cuernavaca Club · Temixco, Morelos · 2027</p>
+      <p class="credito-musica">Starting Over · cover de Chris Stapleton por Cecil Charles</p>
     </footer>
+
+    <audio id="musica-fondo" src="https://aaguirrem0305.github.io/boda-andrea-alejandro/starting-over-cover.mp3" loop preload="auto" autoplay></audio>
+    <button class="btn-musica" id="btn-musica" type="button" aria-label="Reproducir la música de fondo" aria-pressed="false" title="Música: Starting Over">
+      <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72c0 .8.87 1.3 1.56.88l10.5-6.86a1.02 1.02 0 0 0 0-1.76L9.56 4.26A1.02 1.02 0 0 0 8 5.14z"/></svg>
+      <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></svg>
+    </button>
 
     <script>
       // Precios internos de cálculo. La página solo muestra el total del paquete.
@@ -829,6 +862,56 @@
       });
 
       render();
+    </script>
+
+    <script>
+      // ---------- Música de fondo: "Starting Over" (cover) ----------
+      // Se intenta el autoplay al cargar; si el navegador lo bloquea, la
+      // música arranca con el primer toque o clic del invitado en la
+      // página. El botón flotante permite prenderla o apagarla cuando sea.
+      (function () {
+        var audio = document.getElementById("musica-fondo");
+        var boton = document.getElementById("btn-musica");
+        if (!audio || !boton) return;
+        var apagadaPorInvitado = false;
+
+        function reflejar() {
+          var sonando = !audio.paused;
+          boton.classList.toggle("sonando", sonando);
+          boton.setAttribute("aria-pressed", sonando ? "true" : "false");
+          boton.setAttribute("aria-label", sonando ? "Pausar la música de fondo" : "Reproducir la música de fondo");
+        }
+
+        function intentarReproducir() {
+          var p = audio.play();
+          if (p && p.catch) p.catch(function () { /* autoplay bloqueado: se reintenta al primer toque */ });
+        }
+
+        function arranquePorToque(ev) {
+          if (apagadaPorInvitado) return;
+          if (ev.target && boton.contains(ev.target)) return;
+          intentarReproducir();
+        }
+        document.addEventListener("pointerdown", arranquePorToque);
+        document.addEventListener("keydown", arranquePorToque);
+
+        audio.addEventListener("play", reflejar);
+        audio.addEventListener("pause", reflejar);
+
+        boton.addEventListener("click", function () {
+          if (audio.paused) {
+            apagadaPorInvitado = false;
+            intentarReproducir();
+          } else {
+            apagadaPorInvitado = true;
+            audio.pause();
+          }
+          reflejar();
+        });
+
+        intentarReproducir();
+        reflejar();
+      })();
     </script>
   </body>
 </html>
